@@ -1,0 +1,12 @@
+v=vim $*
+l=ls $*
+q=exit
+e=start .
+
+cd=cd-two $*
+
+j=jumpto jump $*
+ja=jumpto add $*
+jls=jumpto list $*
+je=jumpto edit $*
+
