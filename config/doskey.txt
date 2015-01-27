@@ -10,3 +10,10 @@ ja=jumpto add $*
 jls=jumpto list $*
 je=jumpto edit $*
 
+g=git $*
+ga=git add $*
+gc=git commit $*
+gd=git diff $*
+gs=git status $*
+glg=git log $*
+
