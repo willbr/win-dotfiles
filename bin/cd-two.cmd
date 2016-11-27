@@ -8,5 +8,5 @@ if "%~1"=="" (
     cd /d %*
 )
 
-pwd
+rem pwd
 
