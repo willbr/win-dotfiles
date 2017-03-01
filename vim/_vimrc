@@ -1,0 +1,312 @@
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+call vundle#begin('$HOME/vimfiles/bundle/')
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+"" The following are examples of different formats supported.
+"" Keep Plugin commands between vundle#begin/end.
+"" plugin on GitHub repo
+"" Plugin 'tpope/vim-fugitive'
+"" plugin from http://vim-scripts.org/vim/scripts.html
+"" Plugin 'L9'
+"" Git plugin not hosted on GitHub
+"" Plugin 'git://git.wincent.com/command-t.git'
+"" git repos on your local machine (i.e. when working on your own plugin)
+"" Plugin 'file:///home/gmarik/path/to/plugin'
+"" The sparkup vim script is in a subdirectory of this repo called vim.
+"" Pass the path to set the runtimepath properly.
+"" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"" Install L9 and avoid a Naming conflict if you've already installed a
+"" different version somewhere else.
+"" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+
+"Plugin 'gmarik/vundle'
+
+""Bundle 'kien/ctrlp.vim'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'scrooloose/nerdcommenter'
+""Bundle 'scrooloose/nerdtree'
+"Plugin 'scrooloose/syntastic'
+""Bundle 'mileszs/ack.vim'
+""Bundle 'tpope/vim-surround'
+""Bundle 'tpope/vim-repeat'
+""Bundle 'tpope/vim-endwise'
+""Bundle 'tpope/vim-markdown'
+"Plugin 'tpope/vim-fugitive'
+""Bundle 'tpope/vim-rsi'
+"Plugin 'altercation/vim-colors-solarized'
+""Bundle 'tomasr/molokai'
+"Plugin 'Lokaltog/vim-powerline'
+""Bundle 'Lokaltog/vim-easymotion'
+"Plugin 'majutsushi/tagbar'
+Plugin 'ervandew/supertab'
+
+"Plugin 'SirVer/ultisnips'
+""Bundle 'honza/vim-snippets'
+
+""Bundle 'Shougo/neocomplcache' "old
+""Bundle 'Shougo/neocomplete.vim' "new
+""Bundle 'Valloric/YouCompleteMe'
+
+
+
+
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+
+syntax on
+filetype plugin indent on
+
+set nocompatible
+set noswapfile
+set shortmess=atI
+
+set backup
+set backupdir=~/.tmp,~/,.
+set directory=~/.tmp,~/,.
+
+set history=500
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+    set mouse=a
+endif
+
+set tags=./tags;,~/.vimtags
+
+set clipboard=unnamed
+
+cmap w!! w !sudo tee % >/dev/null
+
+set spelllang=en_gb
+map ,s z=
+
+" ----------------------------------------------------------------------------
+"  Text Formatting
+" ----------------------------------------------------------------------------
+
+set autoindent             " automatic indent new lines
+set smartindent            " be smart about it
+inoremap # X<BS>#
+set nowrap                 " do not wrap lines
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+set expandtab              " expand tabs to spaces
+set nosmarttab             " fuck tabs
+set formatoptions+=n       " support for numbered/bullet lists
+set textwidth=72           " wrap at 80 chars by default
+set colorcolumn=72
+set virtualedit=block      " allow virtual edit in visual block ..
+
+" ----------------------------------------------------------------------------
+"  Remapping
+" ----------------------------------------------------------------------------
+
+" lead with ,
+let mapleader = ","
+
+" exit to normal mode with 'jj'
+inoremap jj <ESC>
+inoremap kk <ESC>
+inoremap jk <ESC>
+inoremap Jk <ESC>
+cnoremap jk <ESC>
+
+" set undo point at C-U
+inoremap <C-U> <C-G>u<C-U>
+
+nnoremap 0 ^
+nnoremap ^ 0
+nnoremap ; :
+
+nnoremap <leader>Q :qall!<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>W :silent w !sudo tee % > /dev/null<CR>
+nnoremap <leader>x :x<CR>
+
+nnoremap <leader>e :e<Space>
+
+nnoremap <leader>m :w<CR>:make<CR>
+" reflow paragraph with Q in normal and visual mode
+nnoremap Q gqap
+vnoremap Q gq
+
+" sane movement with wrap turned on
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+" Space toggles folds
+nnoremap <Space> za
+vnoremap <Space> za
+
+"" readline mappings
+"inoremap <C-a> <Home>
+"inoremap <C-e> <End>
+"inoremap <C-f> <Right>
+"inoremap <C-b> <Left>
+"inoremap <C-n> <Down>
+"inoremap <C-p> <Up>
+
+" key tweaks
+inoremap <nul> _
+inoremap <C-Space> _
+
+"nnoremap <silent> <leader>of :FSHere<CR>
+"nnoremap <silent> <leader>a :Ack<Space>
+"nnoremap <silent> <leader>gd :Gdiff<CR>
+
+"" Use very magic search
+"cnoremap s/ s/\v
+"nnoremap / /\v
+"nnoremap ? ?\v
+"vnoremap / /\v
+"vnoremap ? ?\v
+
+"" ----------------------------------------------------------------------------
+"" Window
+"" ----------------------------------------------------------------------------
+
+"nnoremap <C-h> <C-W>h
+"nnoremap <C-j> <C-W>j
+"nnoremap <C-k> <C-W>k
+"nnoremap <C-l> <C-W>l
+
+" ----------------------------------------------------------------------------
+"  UI
+" ----------------------------------------------------------------------------
+
+set ruler                  " show the cursor position all the time
+set noshowcmd              " don't display incomplete commands
+set noshowmode
+set nolazyredraw           " turn off lazy redraw
+set number                 " line numbers
+set relativenumber
+set wildmenu               " turn on wild menu
+set wildmode=list:longest,full
+set ch=2                   " command line height
+set backspace=2            " allow backspacing over everything in insert mode
+set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
+set shortmess=filtIoOA     " shorten messages
+set report=0               " tell us about changes
+set nostartofline          " don't jump to the start of line when scrolling
+set scrolloff=3
+
+"if has("autocmd")
+    "" Put these in an autocmd group, so that we can delete them easily.
+    "augroup vimrcEx
+        "au!
+        "" When editing a file, always jump to the last known cursor position.
+        "" Don't do it when the position is invalid or when inside an event handler
+        "" (happens when dropping a file on gvim).
+        "" Also don't do it when the mark is in the first line, that is the default
+        "" position when opening a file.
+        "autocmd BufReadPost *
+                    "\ if line("'\"") > 1 && line("'\"") <= line("$") |
+                    "\   exe "normal! g`\"" |
+                    "\ endif
+
+    "augroup END
+"endif " has("autocmd")
+
+" ----------------------------------------------------------------------------
+" Visual Cues
+" ----------------------------------------------------------------------------
+
+set showmatch              " brackets/braces that is
+set mat=5                  " duration to show matching brace (1/10 sec)
+set incsearch              " do incremental searching
+set hlsearch
+set laststatus=2           " always show the status line
+set ignorecase             " ignore case when searching
+set smartcase
+set visualbell             " shut the fuck up
+
+
+"" ---------------------------------------------------------------------------
+""  Strip all trailing whitespace in file
+"" ---------------------------------------------------------------------------
+
+"function! StripWhitespace ()
+    "exec ':%s/ \+$//gc'
+"endfunction
+"" map ,s :call StripWhitespace ()<CR>
+
+"" ---------------------------------------------------------------------------
+""  C settings
+"" ---------------------------------------------------------------------------
+
+"set cino+=(0
+
+"if !exists("autocommands_loaded")
+    "let autocommands_loaded = 1
+    "au BufNewFile *.h call s:InsertCHeader()
+"endif
+
+"function! s:InsertCHeader()
+    "let fname = '_' . expand('%:t')
+    "let fname = toupper(fname)
+    "let fname = substitute(fname, '\.', '_', 'g')
+    "call setline(line('.'), "#ifndef " . fname)
+    "call append(line('$'), "#define " . fname)
+    "call append(line('$'), "")
+    "call append(line('$'), "")
+    "call append(line('$'), "")
+    "call append(line('$'), "#endif")
+    "normal GGkk
+"endfunction
+
+" ---------------------------------------------------------------------------
+"  Plugins
+" ---------------------------------------------------------------------------
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+"let g:tagbar_ctags_bin="/usr/local/bin/ctags"
+
+"let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsListSnippets="<c-l>"
+"let g:UltiSnipsSnippetDirectories = ['~/vim/UltiSnips', 'UltiSnips']
+
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"nnoremap <leader>se :UltiSnipsEdit<CR>
+
