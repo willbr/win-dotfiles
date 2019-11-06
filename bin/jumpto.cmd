@@ -41,7 +41,7 @@ exit /b %_return%
 
 :add
     rem echo %0
-    (echo %1;%CD%)>>%_db%
+    (echo %1;"%CD%")>>%_db%
     exit /b 0
 
 :list
