@@ -11,6 +11,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 :*:;name::William Bettridge-Radford
 :*:;email::william.bettridge.radford@gmail.com
 :*:;phone::07866060605
+:*:;lname::Bettridge-Radford
 
 :*:;d::
 FormatTime, CurrentDateTime,, d/M/yyy h:mm tt
