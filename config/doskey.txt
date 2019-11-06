@@ -5,6 +5,10 @@ e=start .
 
 cd=cd-two $*
 
+..=cd ..
+...=cd ..\..
+....=cd ..\..\..
+
 j=jumpto jump $*
 ja=jumpto add $*
 jls=jumpto list $*
