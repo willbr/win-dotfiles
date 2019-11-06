@@ -26,8 +26,14 @@ exit /b %_return%
 :jump
     rem echo %0
     set _found=0
+    set _needle=%~1
+
+    if "%_needle%"=="" (
+        set _needle=home
+    )
+
     for /f "tokens=1-2 delims=;" %%a in (%_db%) do (
-        if "%~1"=="%%a" (
+        if "%_needle%"=="%%a" (
             set _found=1
             pushd %%b
         )

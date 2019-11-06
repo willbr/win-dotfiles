@@ -2,6 +2,7 @@
 
 if not exist "%HOME%" set HOME=%HOMEDRIVE%%HOMEPATH%
 if not exist "%HOME%" set HOME=%USERPROFILE%
+cd /d %HOME%
 
 set PATH=%PATH%;%HOME%\bin;C:\Program Files\Neovim\bin
 
