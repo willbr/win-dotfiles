@@ -3,7 +3,12 @@ l=ls $*
 q=exit
 e=start .
 
+cp=copy $*
+mv=move $*
+
 cd=cd-two $*
+
+popd=popd $T pwd
 
 j=jumpto jump $*
 ja=jumpto add $*
