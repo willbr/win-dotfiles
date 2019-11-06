@@ -2,6 +2,7 @@
 
 if not exist "%HOME%" set HOME=%HOMEDRIVE%%HOMEPATH%
 if not exist "%HOME%" set HOME=%USERPROFILE%
+cd /d %HOME%
 
 set EDITOR=vim
 
