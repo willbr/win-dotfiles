@@ -12,3 +12,4 @@ New-HardLink  $PROFILE.CurrentUserCurrentHost ".\WindowsPowerShell\Microsoft.Pow
 
 New-HardLink $PROFILE.CurrentUserAllHosts ".\WindowsPowerShell\profile.ps1"
 
+New-Item -ItemType SymbolicLink -Path "$Home\Documents\WindowsPowerShell\Modules" -Target ".\WindowsPowerShell\Modules"
