@@ -27,3 +27,42 @@ function gs {
     git status
 }
 
+function Set-TodaysJournal {
+    $path_journal = $env:JOURNAL_DIR
+
+    if (-Not $path_journal) {
+        $path_journal = "~\Documents\Journal"
+    }
+
+    if (-Not (Test-Path -Path $path_journal)) {
+        New-Item -ItemType Directory $path_journal | Out-Null
+    }
+
+    $path_year = Join-Path $path_journal (Get-Date).Year
+
+    $basename = "$(Get-Date -Format "yyyy_MM_dd").md"
+    $path_today = Join-Path $path_year $basename
+
+    if (-Not (Test-Path -Path $path_year)) {
+        New-Item -ItemType Directory $path_year | Out-Null
+    }
+
+    $path_template = Join-Path $path_journal "template.md"
+
+
+    if (Test-Path -Path $path_today -PathType leaf) {
+        Invoke-Item $path_today
+        return
+    }
+
+    if (Test-Path -Path $path_template -PathType leaf) {
+        Copy-Item $path_template $path_today
+    } else {
+        New-Item -Path $path_today -ItemType "file" | Out-Null
+    }
+
+    Invoke-Item $path_today
+}
+
+set-alias jrnl Set-TodaysJournal
+
