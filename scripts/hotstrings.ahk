@@ -14,6 +14,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 :*:;phone::07866060605
 :*:;mobile::07866060605
 
+
 :*:;d::
 FormatTime, CurrentDateTime,, d/M/yyy h:mm tt
 SendInput %CurrentDateTime%

@@ -29,9 +29,7 @@ Plugin 'VundleVim/Vundle.vim'
 "" Plugin 'ascenator/L9', {'name': 'newL9'}
 
 
-"Plugin 'gmarik/vundle'
-
-""Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'scrooloose/nerdcommenter'
 ""Bundle 'scrooloose/nerdtree'
@@ -48,10 +46,10 @@ Plugin 'scrooloose/nerdcommenter'
 "Plugin 'Lokaltog/vim-powerline'
 ""Bundle 'Lokaltog/vim-easymotion'
 "Plugin 'majutsushi/tagbar'
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 
-"Plugin 'SirVer/ultisnips'
-""Bundle 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
 
 ""Bundle 'Shougo/neocomplcache' "old
 ""Bundle 'Shougo/neocomplete.vim' "new
@@ -153,7 +151,7 @@ nnoremap <leader>x :x<CR>
 
 nnoremap <leader>e :e<Space>
 
-nnoremap <leader>m :w<CR>:make<CR>
+nnoremap <leader>m :w<CR>:make<CR><CR>
 " reflow paragraph with Q in normal and visual mode
 nnoremap Q gqap
 vnoremap Q gq
