@@ -29,7 +29,11 @@ function Add-LocationAlias {
     $needle = $args -join "-"
     $pwd = (Get-Location).Path
 
-    $lhs = $pwd | Split-Path -leaf
+    if ($needle -eq "") {
+        $lhs = $pwd | Split-Path -leaf
+    } else {
+        $lhs = $needle
+    }
 
     $db = Get-LocationAliases
 
