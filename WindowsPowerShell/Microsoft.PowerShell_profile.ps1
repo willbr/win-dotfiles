@@ -4,7 +4,7 @@ Write-Output "Hello from my profile!"
 Import-Module JumpTo
 
 function Open-CurrentDirectory {
-    ii .
+    Invoke-Item .
 }
 
 function Exit-Powershell {
@@ -15,7 +15,7 @@ set-alias l ls
 set-alias q Exit-Powershell
 set-alias :q Exit-Powershell
 set-alias e Open-CurrentDirectory
-set-alias v vim
+set-alias v nvim
 
 
 set-alias j Set-LocationByAlias
@@ -65,4 +65,17 @@ function Set-TodaysJournal {
 }
 
 set-alias jrnl Set-TodaysJournal
+
+switch ( $env:computername ) {
+	"surface-laptop" {
+		New-Alias ctoy "c:\tools\ctoy\ctoy.exe"
+		write-output "laptop"
+		break
+	}
+
+	default {
+		write-output "default"
+		break
+	}
+}
 
