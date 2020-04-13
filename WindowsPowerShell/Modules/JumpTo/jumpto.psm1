@@ -15,12 +15,21 @@ if (!(Test-Path $jumpto_database)) {
 
 function Get-LocationAliases {
     $db = Get-Content $jumpto_database | ConvertFrom-Csv -Delimiter ";" -Header "Alias", "Target"
+
+    if ($db.Count -eq 0) {
+        Write-Warning "JumpTo database is empty"
+        return
+    }
+
     return $db
 }
 
 function Set-LocationByAlias() {
     $needle = $args -join "-"
-    $target = (Get-LocationAliases | ? {$_.Alias -eq $needle} | Select-Object -first 1).Target
+    $db = Get-LocationAliases
+
+    $target = ($db | ? {$_.Alias -eq $needle} | Select-Object -first 1).Target
+
     if ($target -eq $null) {
         Write-Warning "no alias"
     } elseif (Test-Path -Path $target) {
