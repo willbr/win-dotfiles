@@ -1,11 +1,16 @@
 Write-Output "Loading JumpTo"
 
-$default_jumpto_database = Resolve-Path "~\config\jumpto.txt"
+$default_jumpto_database = "~\config\jumpto.txt"
 
 $jumpto_database = if ($jumpto_database -eq $null) {
     $default_jumpto_database
 } else {
     $jumpto_database
+}
+
+if (!(Test-Path $jumpto_database)) {
+    Write-Warning "JumpTo database not found, creating: $jumpto_database"
+    New-Item -ItemType File -Path $jumpto_database
 }
 
 function Get-LocationAliases {
@@ -17,11 +22,11 @@ function Set-LocationByAlias() {
     $needle = $args -join "-"
     $target = (Get-LocationAliases | ? {$_.Alias -eq $needle} | Select-Object -first 1).Target
     if ($target -eq $null) {
-        write-error "Error; no alias: $needle"
+        Write-Warning "Error; no alias: $needle"
     } elseif (Test-Path -Path $target) {
         Push-Location $target
     } else {
-        write-error "Error: $target doesn't exist"
+        Write-Warning "Error: $target doesn't exist"
     }
 }
 
@@ -40,7 +45,7 @@ function Add-LocationAlias {
     $alias_already_exists = $db.Alias.Contains($lhs)
 
     if ($alias_already_exists) {
-        Write-Error "Alias already exists: $lhs"
+        Write-Warning "Alias already exists: $lhs"
     } else {
         $line = $lhs + ";" + $pwd
         Write-Output "Adding:"
