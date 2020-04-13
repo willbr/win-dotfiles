@@ -22,11 +22,11 @@ function Set-LocationByAlias() {
     $needle = $args -join "-"
     $target = (Get-LocationAliases | ? {$_.Alias -eq $needle} | Select-Object -first 1).Target
     if ($target -eq $null) {
-        Write-Warning "Error; no alias: $needle"
+        Write-Warning "no alias"
     } elseif (Test-Path -Path $target) {
         Push-Location $target
     } else {
-        Write-Warning "Error: $target doesn't exist"
+        Write-Warning "$target doesn't exist"
     }
 }
 
