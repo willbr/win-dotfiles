@@ -15,7 +15,12 @@ set-alias l ls
 set-alias q Exit-Powershell
 set-alias :q Exit-Powershell
 set-alias e Open-CurrentDirectory
-set-alias v nvim
+
+if (Get-Command nvim -ErrorAction SilentlyContinue) {
+    set-alias v nvim
+} elseif (Get-Command vim -ErrorAction SilentlyContinue) {
+    set-alias v vim
+}
 
 
 set-alias j Set-LocationByAlias
