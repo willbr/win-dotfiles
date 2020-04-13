@@ -64,7 +64,7 @@ function Add-LocationAlias {
 }
 
 function Edit-LocationAliases {
-    ii $jumpto_database
+    Invoke-Item $jumpto_database
 }
 
 
